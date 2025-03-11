@@ -27,8 +27,14 @@ const cacheFirstStrategy = async (request) => {
   }
 };
 
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    addResourceToCache(['index.html', 'style.css', 'main.js']),
+  );
+});
+
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     cacheFirstStrategy(event.request),
   );
-})
+});
