@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ua">
+
+<head>
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0d6efd">
+
+  <link rel="stylesheet" href="/style.css">
+
+  <title>Прайслисти</title>
+</head>
+
+<body>
+  <header>
+    <details>
+      <summary>Налаштування — зберігаються автоматично</summary>
+
+      <form id="form-settings">
+        <div class="form-settings-long">
+          <label for="input-github-token">Персональний ключ доступу</label>
+          <input data-storage-key="github_token" type="password" id="input-github-token" required>
+        </div>
+
+        <div>
+          <label for="input-currency-usd">USD</label>
+          <input data-storage-key="currency_usd" type="number" step="0.01" min="0" id="input-currency-usd">
+        </div>
+
+        <div>
+          <label for="input-currency-eur">EUR</label>
+          <input data-storage-key="currency_eur" type="number" step="0.01" min="0" id="input-currency-eur">
+        </div>
+      </form>
+    </details>
+  </header>
+
+  <main>
+    <input autofocus type="search" id="input-search" placeholder="Пошуковий запит">
+    <section id="list-search-results"></section>
+  </main>
+
+  <script>
+    const registerServiceWorker = async () => {
+      if ('serviceWorker' in navigator)
+        await navigator.serviceWorker.register('/serviceWorker.js');
+    };
+
+    registerServiceWorker();
+  </script>
+
+  <script type="module" src="/main.js"></script>
+</body>
+
+</html>
